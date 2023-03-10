@@ -1,18 +1,19 @@
 [package]
 name = "diffuser-scheduler"
-publish = false
 version = "0.0.0"
 authors = ["Aster <192607617@qq.com>"]
-description = "..."
-repository = "https://github.com/oovm/sub_projects"
-documentation = "https://docs.rs/sub_projects"
+description = "Shared definition for diffuser schedulers"
+repository = "https://github.com/oovm/diffuser-types"
+documentation = "https://docs.rs/diffuser-scheduler"
 readme = "Readme.md"
 license = "MPL-2.0"
 edition = "2021"
 
 [dependencies]
+serde = { version = "1.0.154" }
 
 [dev-dependencies]
+serde_json = "1.0.94"
 
 [features]
 default = []

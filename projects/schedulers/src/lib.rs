@@ -1,4 +1,5 @@
 mod traits;
-mod kind;
+mod kinds;
 
-pub use traits::{Error, Result};
+pub use traits::{Scheduler};
+mod types;
