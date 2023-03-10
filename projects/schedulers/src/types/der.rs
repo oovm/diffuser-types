@@ -6,10 +6,7 @@ use serde::{
     Deserialize, Deserializer,
 };
 
-use crate::{
-    schedulers::{DDIMScheduler, DiffuserScheduler, DiffuserSchedulerKind},
-    EulerScheduler,
-};
+use crate::{DDIMScheduler, DiffuserScheduler, DiffuserSchedulerKind, EulerScheduler};
 
 struct SchedulerVisitor {}
 

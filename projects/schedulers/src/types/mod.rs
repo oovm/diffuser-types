@@ -18,9 +18,3 @@ impl Default for DiffuserScheduler {
         Self::DDIM(Box::new(DDIMScheduler::default()))
     }
 }
-
-impl Default for DiffuserSchedulerKind {
-    fn default() -> Self {
-        Self::DDIM
-    }
-}

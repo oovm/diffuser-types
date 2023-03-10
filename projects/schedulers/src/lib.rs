@@ -1,5 +1,10 @@
-mod traits;
-mod kinds;
+pub use crate::{
+    kinds::DiffuserSchedulerKind,
+    traits::Scheduler,
+    types::{DDIMScheduler, DiffuserScheduler, EulerScheduler},
+};
 
-pub use traits::{Scheduler};
+mod kinds;
+mod traits;
+
 mod types;
