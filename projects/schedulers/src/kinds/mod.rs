@@ -1,4 +1,5 @@
 use crate::DiffuserScheduler;
+use serde::Serialize;
 
 #[repr(u8)]
 #[derive(Clone, Debug, Serialize)]

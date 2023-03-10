@@ -6,4 +6,9 @@ fn ready() {
 }
 
 #[test]
-fn test() {}
+fn test() {
+    let ddim1: DiffuserScheduler = serde_json::from_str("\"ddim\"").unwrap();
+    println!("{:#?}", ddim1);
+    let ddim2: DiffuserScheduler = serde_json::from_str(include_str!("ddim.json")).unwrap();
+    println!("{:#?}", ddim2)
+}
