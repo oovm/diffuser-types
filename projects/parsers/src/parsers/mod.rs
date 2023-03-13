@@ -5,6 +5,16 @@ use crate::DiffuserPrompts;
 mod novel_ai;
 mod web_ui;
 
+impl<I, S> From<I> for DiffuserPrompts
+where
+    I: IntoIterator<Item = S>,
+    S: AsRef<str>,
+{
+    fn from(value: I) -> Self {
+        Self { tags: value.into_iter().map(|s| s.as_ref().trim().to_string()).collect() }
+    }
+}
+
 impl FromStr for DiffuserPrompts {
     type Err = ();
 
@@ -13,17 +23,6 @@ impl FromStr for DiffuserPrompts {
     }
 }
 
-impl<I> From<I> for DiffuserPrompts
-where
-    I: IntoIterator<Item = impl Into<String>>,
-{
-    fn from(value: I) -> Self {
-        Self { tags: value.into_iter().map(|s| s.into()).collect() }
-    }
-}
-
-#[test]
-fn test() {
-    let prompts = DiffuserPrompts::from(vec!["a", "b", "c"]);
-    println!("{:?}", prompts)
+fn parse_one<S: AsRef<str>>(s: S) -> String {
+    s.as_ref().trim().to_string()
 }

@@ -1,4 +1,4 @@
-use diffuser_scheduler::DiffuserScheduler;
+use diffuser_parser::DiffuserPrompts;
 
 #[test]
 fn ready() {
@@ -7,8 +7,6 @@ fn ready() {
 
 #[test]
 fn test() {
-    let ddim1: DiffuserScheduler = serde_json::from_str("\"ddim\"").unwrap();
-    println!("{:#?}", ddim1);
-    let ddim2: DiffuserScheduler = serde_json::from_str(include_str!("ddim.json")).unwrap();
-    println!("{:#?}", ddim2)
+    let prompts = DiffuserPrompts::from(vec!["a", "b", "c"]);
+    println!("{:?}", prompts)
 }
