@@ -1,0 +1,4 @@
+{
+    "type": "ddim",
+    "init_noise_sigma": 1
+}

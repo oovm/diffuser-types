@@ -1,0 +1,20 @@
+[package]
+name = "diffuser-parser"
+version = "0.0.0"
+authors = ["Aster <192607617@qq.com>"]
+description = "Shared definition for diffuser parsers"
+repository = "https://github.com/oovm/diffuser-types"
+documentation = "https://docs.rs/diffuser-scheduler"
+readme = "Readme.md"
+license = "MPL-2.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0.154", features = ["derive"] }
+log = "0.4.17"
+
+[dev-dependencies]
+serde_json = "1.0.94"
+
+[features]
+default = []
