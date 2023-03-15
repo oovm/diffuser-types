@@ -5,7 +5,7 @@ use serde::{
     Deserialize, Deserializer,
 };
 
-use crate::DiffuserSchedulerKind;
+use crate::{utils::match_lowercase, DiffuserSchedulerKind};
 
 struct SchedulerKindDeserializer;
 
@@ -18,6 +18,12 @@ impl<'de> Deserialize<'de> for DiffuserSchedulerKind {
     }
 }
 
+impl From<usize> for DiffuserSchedulerKind {
+    fn from(value: usize) -> Self {
+        unsafe { transmute::<usize, Self>(value) }
+    }
+}
+
 impl FromStr for DiffuserSchedulerKind {
     type Err = String;
 
@@ -25,8 +31,8 @@ impl FromStr for DiffuserSchedulerKind {
         if s.eq_ignore_ascii_case("ddim") {
             Ok(DiffuserSchedulerKind::DDIM)
         }
-        else if s.eq_ignore_ascii_case("euler") {
-            Ok(DiffuserSchedulerKind::Euler)
+        else if match_lowercase(s, &["Euler", "EulerDiscreteScheduler"]) {
+            Ok(DiffuserSchedulerKind::EulerDiscrete)
         }
         else {
             Err(format!("Unknown scheduler name `{s}`."))

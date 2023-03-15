@@ -1,7 +1,4 @@
-use serde::{
-    ser::{SerializeSeq, SerializeStruct},
-    Serialize, Serializer,
-};
+use serde::{ser::SerializeSeq, Serialize, Serializer};
 
 use crate::DiffuserPrompts;
 

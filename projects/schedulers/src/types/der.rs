@@ -8,6 +8,7 @@ use serde::{
 
 use crate::{DDIMScheduler, DiffuserScheduler, DiffuserSchedulerKind, EulerDiscreteScheduler};
 
+/// should support config from [huggingface/schedulers](https://github.com/huggingface/diffusers/tree/main/src/diffusers/schedulers)
 struct SchedulerDeserializer;
 
 impl<'de> Deserialize<'de> for DiffuserScheduler {
@@ -43,7 +44,7 @@ impl<'de> Visitor<'de> for SchedulerDeserializer {
         let visitor = TaggedContentVisitor::<DiffuserSchedulerKind>::new("type", "internally tagged enum DiffuserScheduler");
         let tagged = visitor.visit_map(map)?;
         match tagged.tag {
-            DiffuserSchedulerKind::Euler => {
+            DiffuserSchedulerKind::EulerDiscrete => {
                 let scheduler = EulerDiscreteScheduler::deserialize(ContentDeserializer::<A::Error>::new(tagged.content))?;
                 Ok(DiffuserScheduler::Euler(Box::new(scheduler)))
             }

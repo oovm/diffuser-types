@@ -1,26 +1,49 @@
-use crate::DiffuserScheduler;
 use serde::Serialize;
 
-#[repr(u8)]
+use crate::DiffuserScheduler;
+
+#[repr(usize)]
 #[derive(Clone, Debug, Serialize)]
 pub enum DiffuserSchedulerKind {
-    Euler,
-    DDIM,
+    EulerDiscrete = 100,
+    EulerAncestralDiscrete = 101,
+    DDIM = 200,
+    DDPM = 201,
+    LMSDiscrete,
+    /// DMP++
+    DPMSolver,
+    /// DMP++
+    DPMSolverPlusPlus,
 }
 
 mod der;
 
 impl Default for DiffuserSchedulerKind {
     fn default() -> Self {
-        Self::DDIM
+        Self::DPMSolverPlusPlus
     }
 }
 
 impl DiffuserSchedulerKind {
     pub fn as_scheduler(&self) -> DiffuserScheduler {
         match self {
-            DiffuserSchedulerKind::Euler => DiffuserScheduler::Euler(Box::default()),
+            DiffuserSchedulerKind::EulerDiscrete => DiffuserScheduler::Euler(Box::default()),
             DiffuserSchedulerKind::DDIM => DiffuserScheduler::DDIM(Box::default()),
+            DiffuserSchedulerKind::LMSDiscrete => {
+                unimplemented!()
+            }
+            DiffuserSchedulerKind::DPMSolver => {
+                unimplemented!()
+            }
+            DiffuserSchedulerKind::DPMSolverPlusPlus => {
+                unimplemented!()
+            }
+            DiffuserSchedulerKind::EulerAncestralDiscrete => {
+                unimplemented!()
+            }
+            DiffuserSchedulerKind::DDPM => {
+                unimplemented!()
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 pub use self::{ddim::DDIMScheduler, euler::EulerDiscreteScheduler};
 
 mod ddim;
+mod ddpm;
 mod der;
 mod euler;
 

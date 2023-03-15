@@ -1,7 +1,7 @@
 use std::{fmt::Formatter, str::FromStr};
 
 use serde::{
-    de::{Error, MapAccess, SeqAccess, Visitor},
+    de::{Error, SeqAccess, Visitor},
     Deserialize, Deserializer,
 };
 
